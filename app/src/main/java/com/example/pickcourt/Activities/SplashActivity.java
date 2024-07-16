@@ -12,6 +12,8 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+
+import com.example.pickcourt.Activities.Authentication.LoginActivity;
 import com.example.pickcourt.R;
 
 /*
@@ -78,7 +80,7 @@ public class SplashActivity extends AppCompatActivity {
             public void onAnimationStart(@NonNull android.animation.Animator animation) {}
             @Override
             public void onAnimationEnd(@NonNull android.animation.Animator animation) {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_dark_green_background"
+    tools:context=".Activities.Authentication.LoginActivity">
+
+    <!-- App Icon -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/app_icon"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/ic_pickcourt_foreground" />
+
+    <!-- Welcome Text -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/auth_TITLE_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:text="@string/welcome"
+        android:textSize="40sp"
+        android:fontFamily="@font/robotocondensedvariablefontwght"
+        android:textColor="@color/white" />
+
+    <!-- Username Field -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/username_layout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/auth_TITLE_welcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textColorHint="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_TEXTINPUT_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/username"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Password Field -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_layout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColorHint="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_TEXTINPUT_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Login Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_BTN"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/primary_orange"
+        android:text="@string/login"
+        android:textColor="@color/white" />
+
+    <!-- Sign Up TextView -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/login_TEXTVIEW_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_BTN"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Don't have an account? Sign Up"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        android:textSize="16sp"/>
+
+</RelativeLayout>
