@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.services)
+
 }
 
 android {
@@ -44,7 +45,8 @@ dependencies {
 
 
     implementation (libs.material.v170)
-
+    // Google
+    implementation(libs.play.services.auth)
     // Firebase:
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)

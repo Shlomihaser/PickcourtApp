@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "619383898876-ojdgkqfftgh5nlknrgv1790bdb4oj8ki.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pickcourt",
+            "certificate_hash": "e2ecddd1edb81106795194eb0c85aff158f27ade"
+          }
+        },
+        {
           "client_id": "619383898876-u8cs8aca39c76i9kpc4od169dp6b6ien.apps.googleusercontent.com",
           "client_type": 3
         }

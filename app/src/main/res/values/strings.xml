@@ -6,4 +6,8 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="sign_up">Sign Up</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
+    <string name="already_have_an_account_log_in">Already have an account? Log In</string>
+    <string name="email">Email</string>
+    <string name="enter_as_guest">Enter as Guest</string>
 </resources>
