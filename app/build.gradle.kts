@@ -44,11 +44,12 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
 
-    implementation (libs.material.v170)
-    // Google
-    implementation(libs.play.services.auth)
+    implementation (libs.material.v170)// Material Design 3
+    implementation(libs.play.services.auth) // Google
+    implementation (libs.facebook.login);
     // Firebase:
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.database)
 }

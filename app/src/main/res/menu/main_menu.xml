@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/home"
+            android:icon="@drawable/ic_home"
+            />
+        <item
+            android:id="@+id/nav_payments"
+            android:title="@string/payments"
+            android:icon="@drawable/ic_payment"
+            />
+        <item
+            android:id="@+id/nav_reservations"
+            android:title="@string/reservations"
+            android:icon="@drawable/ic_reservation"
+            />
+        <item
+            android:id="@+id/nav_favorites"
+            android:title="@string/favorites"
+            android:icon="@drawable/ic_favorites"
+            />
+
+
+    </group>
+
+
+    <item android:title="Profile">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_profile"
+                    android:title="@string/profile"
+                    android:icon="@drawable/ic_profile"
+                    />
+            </group>
+            <group android:checkableBehavior="none">
+                <item
+                    android:id="@+id/nav_login"
+                    android:title="@string/login"
+                    android:icon="@drawable/ic_login"
+                    />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:title="@string/logout"
+                    android:icon="@drawable/ic_logout"
+                    />
+            </group>
+
+
+        </menu>
+    </item>
+
+
+    <item android:title="@string/share">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_contact_us"
+                    android:title="@string/contact_us"
+                    android:icon="@drawable/ic_contactus"
+                    />
+                <item
+                    android:id="@+id/nav_about"
+                    android:title="@string/about"
+                    android:icon="@drawable/ic_about"
+                    />
+            </group>
+        </menu>
+    </item>
+
+</menu>

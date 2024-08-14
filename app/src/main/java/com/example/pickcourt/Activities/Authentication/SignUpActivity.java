@@ -1,17 +1,12 @@
 package com.example.pickcourt.Activities.Authentication;
 
-import android.content.Context;
+
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pickcourt.Activities.BaseActivity;
 import com.example.pickcourt.R;
@@ -62,8 +57,12 @@ public class SignUpActivity extends BaseActivity {
     }
 
     private void signUpUser(){
-        String email = signup_TEXTINPUT_email.getText().toString().trim();
-        String password = signup_TEXTINPUT_password.getText().toString().trim();
+        String email = "";
+        String password = "";
+        if(signup_TEXTINPUT_email.getText() != null)
+            email = signup_TEXTINPUT_email.getText().toString().trim();
+        if(signup_TEXTINPUT_password.getText() != null)
+            password = signup_TEXTINPUT_password.getText().toString().trim();
 
         if (email.isEmpty()) {
             signup_TEXTINPUT_email.setError("Email cannot be empty");
@@ -83,6 +82,7 @@ public class SignUpActivity extends BaseActivity {
                             FirebaseUser user = mAuth.getCurrentUser(); // user options
                             Toast.makeText(SignUpActivity.this,"Signup Success! Try Login",Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(SignUpActivity.this,LoginActivity.class);
+                            assert user != null;
                             i.putExtra("email",user.getEmail());
                             startActivity(i);
                             finish();
