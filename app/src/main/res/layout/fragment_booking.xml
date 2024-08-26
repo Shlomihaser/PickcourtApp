@@ -1,0 +1,115 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    android:background="@drawable/court_info_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reservation"
+            android:fontFamily="@font/monaltmedium"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:gravity="center"
+
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/title_choose_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="120dp"
+                android:background="@drawable/textview_stroke"
+                android:fontFamily="@font/monaltregular"
+                android:text="Choose Date"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button_date_picker"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                style="@style/buttonsStyle"
+                app:backgroundTint="@color/white"
+                android:background="@drawable/edit_text_background"
+                android:fontFamily="@font/monaltregular"
+                android:text="Date"
+                android:textColor="@android:color/white" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_hours"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="50dp" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="50dp">
+
+            <TextView
+                android:id="@+id/title_num_players"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Num of Players"
+                android:textSize="18sp"
+                android:fontFamily="@font/monaltregular"
+                android:textStyle="bold"
+                android:layout_marginStart="15dp"
+                android:layout_gravity="center_vertical|start"
+                android:textColor="@android:color/white"
+                android:background="@drawable/textview_stroke"
+                android:layout_marginRight="95dp" />
+
+            <EditText
+                android:id="@+id/input_num_players"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:inputType="number"
+                android:maxLength="1"
+                android:text="2"
+                android:background="@drawable/edit_text_background"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:fontFamily="@font/monaltregular"
+                android:layout_marginStart="8dp"
+                android:width="50dp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit_button"
+        style="@style/buttonsStyle"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/regular_button"
+        app:backgroundTint="@color/white"
+        android:fontFamily="@font/monaltblack"
+        android:text="Submit"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>

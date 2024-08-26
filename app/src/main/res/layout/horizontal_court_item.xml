@@ -1,0 +1,108 @@
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/court_CARD"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    android:backgroundTint="@android:color/white"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    app:strokeColor="@color/primary_blue"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Image -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/court_IMG_photo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/RoundedImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+             />
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/court_LBL_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_blue"
+            android:fontFamily="@font/monaltmedium"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/court_IMG_photo"
+            app:layout_constraintEnd_toStartOf="@id/court_FAB_favorite"
+            app:layout_constraintHorizontal_bias="0"
+            android:text="City Park Tennis Courts"
+            android:layout_marginStart="10dp"
+            /> <!-- Added margin to keep space -->
+
+        <!-- Indoor/Outdoor Label -->
+        <TextView
+            android:id="@+id/court_LBL_indoorOutdoor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:fontFamily="@font/monaltmedium"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/court_LBL_name"
+            app:layout_constraintStart_toEndOf="@id/court_IMG_photo"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="10dp"
+            android:text="Outdoor" />
+
+        <!-- Rating Text -->
+        <TextView
+            android:id="@+id/court_LBL_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:fontFamily="@font/monaltmedium"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/court_LBL_indoorOutdoor"
+            app:layout_constraintStart_toEndOf="@id/court_IMG_photo"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="10dp"
+            android:text="Rating: 2.1" />
+
+        <!-- Price Label -->
+        <TextView
+            android:id="@+id/court_LBL_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="@font/monaltmedium"
+            android:textColor="@color/primary_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="$20/hour" />
+
+        <!-- Favorite Button -->
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/court_FAB_favorite"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            app:srcCompat="@drawable/ic_favorite"
+            android:background="@drawable/ripple_favorite"
+            app:tint="@color/primary_blue"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

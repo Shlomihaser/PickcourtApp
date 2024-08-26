@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/primary_blue"/>
+        </shape>
+    </item>
+    <item>
+        <path
+            android:fillColor="@color/primary_blue"
+            android:pathData="M0,100 C100,0 200,200 300,100 C400,0 500,200 600,100 L600,200 L0,200 Z"/>
+    </item>
+</layer-list>

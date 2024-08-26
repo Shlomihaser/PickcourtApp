@@ -2,8 +2,66 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primary_orange"> #FE7833</color>
     <color name="primary_dark_green_background"> #243837</color>
     <color name="secondary_green_background">#2f403f</color>
     <color name="light_white">#d6d4cb</color>
+    <color name="colorPrimary">#CC7933</color>
+    <color name="defaultCardBackground">#F5F5F5</color>
+    <color name="normalCardStrokeColor">#DDDDDD</color>
+
+    <!-- Your existing colors -->
+    <color name="primary_orange">#FE7833</color>
+    <color name="primary_dark_green">#243837</color>
+    <color name="light_dark_green">#404a49</color>
+    <!-- Complementary colors -->
+    <color name="secondary_light_orange">#FFA366</color>
+    <color name="secondary_dark_orange">#CC5F29</color>
+    <color name="accent_teal">#2A9D8F</color>
+    <color name="accent_light_teal">#4DB6A9</color>
+
+    <color name="primary_blue">#182A58</color>
+    <color name="secondary_blue">#2A4178</color>
+    <!-- Neutral colors -->
+    <color name="neutral_light">#F4F1DE</color>
+    <color name="neutral_medium">#E0DBC8</color>
+    <color name="neutral_dark">#3D3D3D</color>
+
+    <!-- Text colors -->
+    <color name="text_primary">#333333</color>
+    <color name="text_secondary">#666666</color>
+    <color name="text_light">#FFFFFF</color>
+
+    <!-- Background colors -->
+    <color name="background_light">#FFFFFF</color>
+    <color name="background_off_white">#F9F7F0</color>
+
+    <!-- Status colors -->
+    <color name="status_success">#4CAF50</color>
+    <color name="status_warning">#FFC107</color>
+    <color name="status_error">#F44336</color>
+    <color name="background_color">#F5F5F5</color> <!-- Light gray background -->
+    <color name="toolbar_background">#3B8A57</color> <!-- Dark green -->
+
+    <color name="menu_background">#3B8A57</color>
+    <color name="menu_item_color">#FF000000</color>
+    <color name="menu_item_selected_color">#F5F5F5</color>
+    <color name="menu_item_background">#FFFFFF</color>
+
+
+    <!-- Additional Blue Shades -->
+    <color name="light_blue">#A4C8E1</color>
+    <color name="sky_blue">#87CEEB</color>
+    <color name="dark_blue">#0D1B2A</color>
+    <color name="navy_blue">#001F3F</color>
+    <color name="teal_blue">#008080</color>
+
+    <!-- Complementary Colors -->
+    <color name="light_gray">#D3D3D3</color>
+    <color name="medium_gray">#A9A9A9</color>
+    <color name="dark_gray">#696969</color>
+    <color name="soft_green">#A8D5BA</color>
+    <color name="soft_yellow">#FFF9C4</color>
+    <color name="coral">#FF6F61</color>
+    <color name="light_orange">#FFCC80</color>
+    <color name="card_stroke_color">#DDDDDD</color>
 </resources>

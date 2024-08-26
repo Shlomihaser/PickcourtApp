@@ -11,36 +11,29 @@ import android.util.Log;
 
 import android.util.Patterns;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.example.pickcourt.Activities.BaseActivity;
-import com.example.pickcourt.Activities.Pages.MainDashActivity;
+import com.example.pickcourt.Activities.MainDashActivity;
+import com.example.pickcourt.DataBaseManager;
 import com.example.pickcourt.R;
 
-import com.facebook.CallbackManager;
+import com.example.pickcourt.Utilities.SignalManager;
 
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.Identity;
 import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GetTokenResult;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Objects;
@@ -56,16 +49,16 @@ public class LoginActivity extends BaseActivity {
     private MaterialTextView login_TEXTVIEW_signup;
     private MaterialTextView login_TEXTVIEW_forgot_password;
     private MaterialButton guest_entry_BTN;
-    private CallbackManager mCallbackManager;
     private AppCompatImageButton google_BTN;
+    private SignalManager signalManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
+        signalManager = SignalManager.getInstance();
 
-        mCallbackManager = CallbackManager.Factory.create();
         oneTapClient = Identity.getSignInClient(this);
         signInRequest = BeginSignInRequest.builder()
                 .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
@@ -96,11 +89,14 @@ public class LoginActivity extends BaseActivity {
             String email = previousIntent.getStringExtra("email");
             login_TEXTINPUT_email.setText(email);
         }
+
         login_BTN.setOnClickListener((v) -> loginUser());
         login_TEXTVIEW_signup.setOnClickListener((v) -> redirectToSignup());
         login_TEXTVIEW_forgot_password.setOnClickListener((v) -> resetPassword());
         guest_entry_BTN.setOnClickListener((v) -> enterAsGuest());
         google_BTN.setOnClickListener((v) -> loginByGoogle());
+        login_TEXTINPUT_email.setText("hasshlomi21@gmail.com");
+        login_TEXTINPUT_password.setText("yhyh123123");
     }
 
     private void resetPassword() {
@@ -117,8 +113,6 @@ public class LoginActivity extends BaseActivity {
             login_TEXTINPUT_email.requestFocus();
             return;
         }
-
-        Log.d("ResetPassword", "Checking if user exists for email: " + email);
 
         // Attempt to create a user to check if the email already exists
         mAuth.createUserWithEmailAndPassword(email, "temporaryPassword")
@@ -137,12 +131,10 @@ public class LoginActivity extends BaseActivity {
                     } else {
                         Exception exception = task.getException();
                         if (exception instanceof FirebaseAuthUserCollisionException) {
-                            Log.d("ResetPassword", "User exists, sending reset email: " + email);
                             sendResetEmail(email);
                         } else {
                             String errorMessage = exception.getMessage();
-                            Log.e("ResetPassword", "Error checking user: " + errorMessage);
-                            Toast.makeText(LoginActivity.this, "Error: " + errorMessage, Toast.LENGTH_LONG).show();
+                            signalManager.toast("Error: " + errorMessage);
                         }
                     }
                 });
@@ -153,12 +145,10 @@ public class LoginActivity extends BaseActivity {
         mAuth.sendPasswordResetEmail(email)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Log.d("ResetPassword", "Password reset email sent successfully");
-                        Toast.makeText(LoginActivity.this, "Password reset email sent", Toast.LENGTH_LONG).show();
+                        signalManager.toast("Password reset email sent");
                     } else {
                         String errorMessage = task.getException() != null ? task.getException().getMessage() : "Failed to send reset email";
-                        Log.e("ResetPassword", "Error sending reset email: " + errorMessage);
-                        Toast.makeText(LoginActivity.this, "Error: " + errorMessage, Toast.LENGTH_LONG).show();
+                        signalManager.toast("Error: " + errorMessage);
                     }
                 });
     }
@@ -166,15 +156,15 @@ public class LoginActivity extends BaseActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null)
-            Log.d("Already here","Already Signed login Activity");
+        if (currentUser != null) Log.d("Already here","Already Signed login Activity");
     }
 
     private void loginUser() {
-        String email = ""; String password = "";
-        if(login_TEXTINPUT_email.getText() != null)
+        String email = "";
+        String password = "";
+        if (login_TEXTINPUT_email.getText() != null)
             email = login_TEXTINPUT_email.getText().toString().trim();
-        if(login_TEXTINPUT_password.getText() != null)
+        if (login_TEXTINPUT_password.getText() != null)
             password = login_TEXTINPUT_password.getText().toString().trim();
 
         if (email.isEmpty()) {
@@ -187,30 +177,11 @@ public class LoginActivity extends BaseActivity {
         }
 
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            if (user != null) {
-                                user.getIdToken(true)
-                                        .addOnCompleteListener(task1 -> {
-                                            if (task1.isSuccessful()) {
-                                                String idToken = task1.getResult().getToken();
-                                                Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                                Intent i = new Intent(LoginActivity.this, MainDashActivity.class);
-                                                i.putExtra("idToken", idToken);
-                                                startActivity(i);
-                                                finish();
-                                            } else {
-                                                Toast.makeText(LoginActivity.this, "Failed to get ID token: " + task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-                            }
-                        } else {
-                            Toast.makeText(LoginActivity.this, "Login Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        signalManager.toast("Login Successful");
+                        navigateToMainDashboard();
+                    } else SignalManager.getInstance().toast("Login Failed: " + task.getException().getMessage());
                 });
     }
 
@@ -220,95 +191,71 @@ public class LoginActivity extends BaseActivity {
         mAuth.signInAnonymously()
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
-                            user.getIdToken(true)
-                                    .addOnCompleteListener(task1 -> {
-                                        if (task1.isSuccessful()) {
-                                            String idToken = task1.getResult().getToken();
-                                            Intent i = new Intent(LoginActivity.this, MainDashActivity.class);
-                                            i.putExtra("idToken", idToken);
-                                            startActivity(i);
-                                            finish();
-                                        } else {
-                                            Toast.makeText(LoginActivity.this, "Failed to get user token.",
-                                                    Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                    } else {
-                        Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
-                    }
+                        signalManager.toast("Entered as Guest");
+                        navigateToMainDashboard();
+                    } else SignalManager.getInstance().toast("Authentication failed.");
                 });
     }
 
 
     private void loginByGoogle() {
         oneTapClient.beginSignIn(signInRequest)
-                .addOnSuccessListener(this, new OnSuccessListener<BeginSignInResult>() {
-                    @Override
-                    public void onSuccess(BeginSignInResult result) {
-                        try {
-                            startIntentSenderForResult(
-                                    result.getPendingIntent().getIntentSender(), RC_SIGN_IN,
-                                    null, 0, 0, 0);
-                        } catch (IntentSender.SendIntentException e) {
-                            Log.e("GoogleSignIn", "Couldn't start One Tap UI: " + e.getLocalizedMessage());
-                        }
+                .addOnSuccessListener(this, result -> {
+                    try {
+                        startIntentSenderForResult(
+                                result.getPendingIntent().getIntentSender(), RC_SIGN_IN,
+                                null, 0, 0, 0);
+                    } catch (IntentSender.SendIntentException e) {
+                        Log.e("GoogleSignIn", "Couldn't start One Tap UI: " + e.getLocalizedMessage());
                     }
-                })
-                .addOnFailureListener(this, new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("GoogleSignIn", Objects.requireNonNull(e.getLocalizedMessage()));
-                    }
-                });
+                }).addOnFailureListener(this, e -> Log.d("GoogleSignIn", Objects.requireNonNull(e.getLocalizedMessage())));
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        mCallbackManager.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             try {
                 SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
                 String idToken = credential.getGoogleIdToken();
-                if (idToken != null) {
-                    firebaseAuthWithGoogle(idToken);
-                }
+                if (idToken != null) firebaseAuthWithGoogle(idToken);
             } catch (ApiException e) {
                 Log.e("GoogleSignIn", "Google sign in failed", e);
             }
         }
     }
 
+
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(LoginActivity.this, "Signed in as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(LoginActivity.this, MainDashActivity.class);
-                            i.putExtra("idToken",idToken);
-                            startActivity(i);
-                            finish();
-                        } else {
-                            Log.w("GoogleSignIn", "signInWithCredential:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                            DataBaseManager.getInstance().setUserExistCallback(this::handleUserExistence);
+                            DataBaseManager.getInstance().checkIfUserExists(user.getUid());
+                    } else SignalManager.getInstance().toast("Authentication failed.");
                 });
     }
 
+    private void handleUserExistence(boolean exists) {
+        if (exists) SignalManager.getInstance().toast("Welcome back!");
+        else DataBaseManager.getInstance().createNewUser(mAuth.getCurrentUser().getUid());
+        navigateToMainDashboard();
+    }
+
+
+    private void navigateToMainDashboard() {
+        Intent intent = new Intent(this, MainDashActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
     private void redirectToSignup() {
         Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
         startActivity(intent);
         finish();
     }
-
 
 
 }

@@ -5,12 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_dark_green_background"
+    android:background="@color/primary_blue"
     tools:context=".Activities.Authentication.SignUpActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/app_icon"
         android:layout_width="130dp"
+        android:tint="@color/white"
         android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
@@ -81,9 +82,9 @@
         android:layout_below="@id/password_layout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/primary_orange"
+        android:backgroundTint="@color/white"
         android:text="@string/sign_up"
-        android:textColor="@color/white" />
+        android:textColor="@color/primary_blue" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/signup_TEXTVIEW_login"

@@ -9,7 +9,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.pickcourt.Activities.BaseActivity;
+import com.example.pickcourt.DataBaseManager;
 import com.example.pickcourt.R;
+import com.example.pickcourt.Utilities.SignalManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
@@ -26,13 +28,14 @@ public class SignUpActivity extends BaseActivity {
     private TextInputEditText signup_TEXTINPUT_password;
     private MaterialTextView signup_TEXTVIEW_login;
     private MaterialButton signup_BTN;
-
+    private SignalManager signalManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         mAuth = FirebaseAuth.getInstance();
+        signalManager = SignalManager.getInstance();
         findViews();
         initViews();
     }
@@ -75,22 +78,16 @@ public class SignUpActivity extends BaseActivity {
         }
 
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser(); // user options
-                            Toast.makeText(SignUpActivity.this,"Signup Success! Try Login",Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(SignUpActivity.this,LoginActivity.class);
-                            assert user != null;
-                            i.putExtra("email",user.getEmail());
-                            startActivity(i);
-                            finish();
-                        } else {
-                            Toast.makeText(SignUpActivity.this, "Signup failed. Try Again.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser(); // user options
+                        DataBaseManager.getInstance().createNewUser(user.getUid());
+                        signalManager.toast("Signup Success! Try Login");
+                        Intent i = new Intent(SignUpActivity.this,LoginActivity.class);
+                        i.putExtra("email",user.getEmail());
+                        startActivity(i);
+                        finish();
+                    } else signalManager.toast("Signup failed. Try Again.");
                 });
     }
 

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/tools"
+    android:background="@drawable/court_info_background"
+    android:padding="16dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_above="@+id/book_button"
+            android:layout_alignParentTop="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- About the Club Section -->
+                <TextView
+                    android:id="@+id/court_LBL_about_title"
+                    android:drawableStart="@drawable/ic_about_court"
+                    android:drawablePadding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="About the Club"
+                    android:fontFamily="@font/monaltmedium"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/textview_stroke" />
+
+                <TextView
+                    android:id="@+id/court_LBL_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:fontFamily="monospace"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="30dp" /> <!-- Increased margin for spacing -->
+
+                <!-- Opening Hours Section -->
+                <TextView
+                    android:id="@+id/court_LBL_opening_hours_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_clock"
+                    android:drawablePadding="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Opening Hours"
+                    android:fontFamily="@font/monaltmedium"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/textview_stroke" />
+
+                <TextView
+                    android:id="@+id/court_LBL_opening_hours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:fontFamily="monospace"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="30dp" /> <!-- Increased margin for spacing -->
+
+                <!-- Club Offers Section -->
+                <TextView
+                    android:id="@+id/court_LBL_offers_title"
+                    android:layout_width="wrap_content"
+                    android:drawableStart="@drawable/ic_features"
+                    android:drawablePadding="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Club Offers"
+                    android:fontFamily="@font/monaltmedium"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/textview_stroke" />
+
+                <TextView
+                    android:id="@+id/court_LBL_offers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:fontFamily="monospace"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <!-- Location Section -->
+                <TextView
+                    android:id="@+id/court_LBL_location_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_location_mark"
+                    android:drawablePadding="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Location"
+                    android:fontFamily="@font/monaltmedium"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/textview_stroke" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp"
+                    android:layout_marginBottom="10dp">
+
+                    <fragment
+                        android:id="@+id/map_google"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        map:uiCompass="true"
+                        android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/court_LBL_location_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_gravity="center"
+                    android:fontFamily="monospace"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/book_button"
+            android:layout_width="160dp"
+            android:layout_height="75dp"
+            android:text="Book Court"
+            android:textSize="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/monaltmedium"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:elevation="10dp"
+            android:background="@drawable/regular_button" />
+
+</RelativeLayout>

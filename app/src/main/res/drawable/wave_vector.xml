@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="600dp"
+    android:height="200dp"
+    android:viewportWidth="600"
+    android:viewportHeight="200">
+
+    <!-- Base wave (bottom layer) -->
+    <path
+        android:fillColor="@color/primary_blue"
+        android:pathData="M0,0 L0,120 C150,180 450,60 600,120 L600,0 Z" />
+
+    <!-- Second wave (middle layer) -->
+    <path
+        android:fillColor="@color/background_light"
+        android:fillAlpha="0.6"
+        android:pathData="M0,0 L0,100 C200,140 400,60 600,100 L600,0 Z" />
+
+    <!-- Third wave (top layer) -->
+    <path
+        android:fillColor="@color/primary_blue"
+        android:fillAlpha="0.4"
+        android:pathData="M0,0 L0,80 C100,100 500,60 600,80 L600,0 Z" />
+
+</vector>

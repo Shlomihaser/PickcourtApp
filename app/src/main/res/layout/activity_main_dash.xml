@@ -5,8 +5,8 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Pages.MainDashActivity"
-
+    tools:context=".Activities.MainDashActivity"
+    tools:openDrawer="start"
     >
     
     <com.google.android.material.navigation.NavigationView
@@ -15,33 +15,24 @@
         android:layout_height="match_parent"
         android:backgroundTint="@color/light_white"
         android:layout_gravity="start"
+        android:background="@color/background_light"
         app:headerLayout="@layout/menu_header"
         app:menu="@menu/main_menu"
+        style="@style/CustomNavigationViewStyle"
     />
 
     <LinearLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
 
 
-        <RelativeLayout
+        <FrameLayout
+            android:id="@+id/dash_frame"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            >
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/menu_ICON"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_menu"
-                />
-
-
-        </RelativeLayout>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

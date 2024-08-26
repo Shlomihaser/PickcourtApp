@@ -25,5 +25,22 @@
     <string name="about">About</string>
     <string name="favorites">Favorites</string>
     <string name="reservations">Reservations</string>
-
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="to_access_payments_please_log_in_first_you_can_find_the_login_option_in_the_menu">To access this page, please log in first.\nYou can find the login option in the menu.</string>
+    <string name="open_menu">Open Menu</string>
+    <string name="delete_card">Delete card</string>
+    <string name="card_image">Card Image</string>
+    <string name="about_desc">
+        Pickcourt is a versatile mobile application designed to simplify the process of renting sports courts for various games, including tennis, football, and more.
+        This platform caters to sports enthusiasts, casual players, and anyone looking to engage in physical activities by providing a seamless way to find and book courts in their vicinity.
+        By providing a user-friendly interface and essential features, Pickcourt aims to promote an active lifestyle and make sports more accessible to everyone.
+    </string>
+    <string name="email_hasshlomi21_gmail_com">Email: hasshlomi21@gmail.com</string>
+    <string name="phone_972_54_6995602">Phone: +972 54 6995602</string>
+    <string name="date">Date</string>
+    <string name="search">Search…</string>
+    <string-array name="sports_array">
+        <item>Tennis</item>
+        <item>Soccer</item>
+    </string-array>
 </resources>

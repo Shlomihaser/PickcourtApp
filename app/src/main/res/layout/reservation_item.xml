@@ -1,0 +1,105 @@
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/reservation_CARD"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    android:backgroundTint="@android:color/white"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    app:strokeColor="@color/primary_blue"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Court Image -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/reservation_IMG_photo"
+            android:layout_width="155dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/RoundedImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+          />
+
+        <!-- Court Name -->
+        <TextView
+            android:id="@+id/reservation_LBL_courtName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_blue"
+            android:fontFamily="@font/monaltmedium"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/reservation_IMG_photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
+            android:text="Court Name" />
+
+        <!-- Reservation Date -->
+        <TextView
+            android:id="@+id/reservation_LBL_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:fontFamily="@font/monaltmedium"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/reservation_LBL_courtName"
+            app:layout_constraintStart_toEndOf="@id/reservation_IMG_photo"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="10dp"
+            android:text="Date: 01/01/2024" />
+
+        <!-- Reservation Hour -->
+        <TextView
+            android:id="@+id/reservation_LBL_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:fontFamily="@font/monaltmedium"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/reservation_LBL_date"
+            app:layout_constraintStart_toEndOf="@id/reservation_IMG_photo"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="10dp"
+            android:text="Hour: 10:00 AM" />
+
+        <!-- Number of Players -->
+        <TextView
+            android:id="@+id/reservation_LBL_numPlayers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:fontFamily="@font/monaltmedium"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/reservation_LBL_hour"
+            app:layout_constraintStart_toEndOf="@id/reservation_IMG_photo"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="10dp"
+            android:text="Players: 4" />
+
+        <!-- Cancel Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/reservation_BTN_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:backgroundTint="@color/primary_blue"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/reservation_LBL_numPlayers"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

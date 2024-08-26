@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_dark_green_background"
+    android:background="@color/primary_blue"
     tools:context=".Activities.Authentication.LoginActivity">
 
     <!-- App Icon -->
@@ -13,6 +13,7 @@
         android:id="@+id/app_icon"
         android:layout_width="130dp"
         android:layout_height="80dp"
+        android:tint="@color/white"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:src="@drawable/ic_pickcourt_foreground" />
@@ -102,10 +103,10 @@
         android:layout_below="@id/login_TEXTVIEW_forgot_password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:backgroundTint="@color/primary_orange"
+        android:backgroundTint="@color/white"
         android:text="@string/login"
         android:textSize="18sp"
-        android:textColor="@color/white" />
+        android:textColor="@color/primary_blue" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/login_TEXTVIEW_signup"

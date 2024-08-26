@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.SplashActivity"
-    android:background="@color/primary_dark_green_background">
+    android:background="@color/primary_blue">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,6 +16,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/splash_IMG_logo"
             android:layout_width="150dp"
+            android:tint="@color/white"
             android:layout_height="150dp"
             android:src="@drawable/ic_pickcourt_foreground" />
 
@@ -24,12 +25,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/lilitaoneregular"
+            android:fontFamily="@font/monaltregular"
             android:text="@string/app_name"
-            android:textColor="@color/primary_orange"
+            android:textColor="@color/white"
             android:textSize="80sp"
             android:gravity="center" />
-
     </LinearLayout>
 
 </RelativeLayout>

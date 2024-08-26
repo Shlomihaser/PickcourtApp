@@ -14,7 +14,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
+        renderscriptTargetApi = 21
+        renderscriptSupportModeEnabled  = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -33,20 +34,25 @@ android {
     }
 }
 
+
+
 dependencies {
 
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-
-    implementation (libs.material.v170)// Material Design 3
+    implementation(libs.play.services.maps); // Google Maps
+    implementation (libs.glide) // Glide
+    implementation (libs.card.form) // Credit Card Form
+    implementation (libs.material.v180) // Material Design 3
     implementation(libs.play.services.auth) // Google
-    implementation (libs.facebook.login);
+
     // Firebase:
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
